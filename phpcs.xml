@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<ruleset name="Laravel Standards">
+    <description>PHP CodeSniffer ruleset for Laravel projects</description>
+
+    <!-- Display progress and sniff -->
+    <arg value="p"/>
+    <arg value="s"/>
+
+    <!-- Show colors in console -->
+    <arg value="-colors"/>
+
+    <!-- Use PSR-12 as a base -->
+    <rule ref="PSR12"/>
+
+    <!-- Exclude PEAR.Commenting.FileComment.Missing rule -->
+    <rule ref="PEAR.Commenting.FileComment.Missing">
+        <severity>0</severity>
+    </rule>
+
+    <!-- Line length -->
+    <rule ref="Generic.Files.LineLength">
+        <properties>
+            <property name="lineLimit" value="120"/>
+            <property name="absoluteLineLimit" value="0"/>
+        </properties>
+    </rule>
+
+    <!-- Laravel specific rules -->
+    <!-- Allow class names to match their file names -->
+    <rule ref="Squiz.Classes.ValidClassName.NotCamelCaps">
+        <severity>0</severity>
+    </rule>
+
+    <!-- Allow multiple classes in one file (for migrations, seeders) -->
+    <rule ref="PSR1.Classes.ClassDeclaration.MultipleClasses">
+        <severity>0</severity>
+    </rule>
+
+    <!-- Allow closing tag for blade files -->
+    <rule ref="PSR2.Files.ClosingTag.NotAllowed">
+        <exclude-pattern>*.blade.php</exclude-pattern>
+    </rule>
+
+    <!-- Paths to check -->
+    <file>app</file>
+    <file>config</file>
+    <file>database</file>
+    <file>resources</file>
+    <file>routes</file>
+    <file>tests</file>
+
+    <!-- Exclude paths -->
+    <exclude-pattern>vendor/*</exclude-pattern>
+    <exclude-pattern>bootstrap/cache/*</exclude-pattern>
+    <exclude-pattern>storage/*</exclude-pattern>
+    <exclude-pattern>*.blade.php</exclude-pattern>
+    <exclude-pattern>*.js</exclude-pattern>
+    <exclude-pattern>*.css</exclude-pattern>
+    <exclude-pattern>node_modules/*</exclude-pattern>
+    <exclude-pattern>public/*</exclude-pattern>
+    <exclude-pattern>resources/lang/*</exclude-pattern>
+    <exclude-pattern>*.xml</exclude-pattern>
+    <exclude-pattern>*.yml</exclude-pattern>
+
+    <!-- Don't hide tokenizer exceptions -->
+    <rule ref="Internal.Tokenizer.Exception">
+        <type>error</type>
+    </rule>
+</ruleset>
