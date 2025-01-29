@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package myService.v1;
+package my_service.v1;
 
 service PostService {
   rpc ListPosts(ListPostsRequest) returns (ListPostsResponse) {}
