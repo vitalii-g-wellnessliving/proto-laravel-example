@@ -12,8 +12,15 @@ class PostController extends Controller
      */
     public function index()
     {
-        return Post::all();
-        //
+        $res = [];
+        foreach (Post::all() as $model) {
+            $res[] = (new \MyService\V1\Post())
+                ->setId($model->id)
+                ->setTitle($model->title)
+                ->setContent($model->content);
+        }
+
+        return (new \MyService\V1\ListPostsResponse())->setPosts($res)->serializeToJsonString();
     }
 
     /**

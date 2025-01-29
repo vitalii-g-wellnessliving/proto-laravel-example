@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package myService.v1;
+
+service PostService {
+  rpc ListPosts(ListPostsRequest) returns (ListPostsResponse) {}
+}
+
+message ListPostsRequest {
+  string query = 1;
+}
+
+message ListPostsResponse {
+  repeated Post posts = 1;
+}
+
+message Post {
+  string id = 1;
+  string title = 2;
+  string content = 3;
+}
